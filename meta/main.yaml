@@ -1,2 +1,5 @@
 ---
 dependencies:
+  - src: "https://git@github.com/illallangi-alfa/handle-reboot.git"
+    scm: git
+    version: master

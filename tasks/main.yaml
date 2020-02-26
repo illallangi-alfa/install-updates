@@ -1,0 +1,36 @@
+---
+- name: "Debian: Update All"
+  apt:
+    update_cache: yes
+    upgrade: dist
+  when:
+    - "(ansible_os_family | lower) == 'debian'"
+  tags:
+    - "update"
+  notify: "reboot"
+- name: "Debian: Clean"
+  apt:
+    autoremove: yes
+    purge: yes
+  when:
+    - "(ansible_os_family | lower) == 'debian'"
+  tags:
+    - "update"
+  notify: "reboot"
+- name: "Red Hat: Update"
+  dnf:
+    name: "*"
+    state: "latest"
+  when:
+    - "(ansible_os_family | lower) == 'redhat'"
+  tags:
+    - "update"
+  notify: "reboot"
+- name: "Red Hat: Clean"
+  dnf:
+    autoremove: yes
+  when:
+    - "(ansible_os_family | lower) == 'redhat'"
+  tags:
+    - "update"
+  notify: "reboot"
