@@ -1,13 +1,14 @@
 ---
 - name: "Update Packages"
   apt:
-    packages_cache: yes
+    update_cache: yes
     upgrade: dist
   when:
     - "(ansible_os_family | lower) == 'debian'"
   tags:
     - "packages"
   notify: "reboot"
+
 - name: "Clean Packages"
   apt:
     autoremove: yes
