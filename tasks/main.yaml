@@ -17,4 +17,3 @@
     - "(ansible_os_family | lower) == 'debian'"
   tags:
     - "packages"
-  notify: "reboot"
